@@ -7,9 +7,10 @@ const transUrl = (name) => {
     case "panda":
       return `${API_URL}${name}`;
     case "all":
+    case "":
       return API_URL;
     default:
-      return API_URL;
+      return "";
   }
 };
 

@@ -8,8 +8,16 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, "..")));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
+const usePath = ["/", "/all", "/penguin", "/koala", "/panda"];
+
+usePath.forEach((pathName) => {
+  app.get(pathName, (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "index.html"));
+  });
+});
+
+app.get("*", (req, res) => {
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
